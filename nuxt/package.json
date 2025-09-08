@@ -1,0 +1,44 @@
+{
+  "private": true,
+  "packageManager": "pnpm@10.15.0",
+  "scripts": {
+    "analyze": "nuxi analyze",
+    "build": "RELEASE=$(pnpm --silent release:dump) nuxi build",
+    "build:start": "node .output/server/index.mjs",
+    "build:start:unsafe": "NODE_TLS_REJECT_UNAUTHORIZED=0 node .output/server/index.mjs",
+    "dev": "NODE_TLS_REJECT_UNAUTHORIZED=0 nuxi dev",
+    "formkit:generate": "pnpx formkit@latest theme --theme=formkit.theme.config.mjs",
+    "graphql-types:generate": "NODE_TLS_REJECT_UNAUTHORIZED=0 graphql-code-generator",
+    "graphql-types:watch": "NODE_TLS_REJECT_UNAUTHORIZED=0 graphql-code-generator --watch",
+    "lint:js": "eslint --max-warnings 0 --ext .ts,.js,.vue .",
+    "lint:style": "stylelint \"**/*.{css,vue}\"",
+    "preview": "nuxi preview",
+    "release:dump": "if git rev-parse --is-inside-work-tree > /dev/null 2>&1; then echo $(git rev-parse HEAD); else echo $(cat public/release-name.txt); fi"
+  },
+  "devDependencies": {
+    "@bttr-devs/eslint-config-nuxt": "^1.2.3",
+    "@bttr-devs/nuxt-layer-sofie-auth": "^2.1.2",
+    "@bttr-devs/stylelint-nuxt": "^1.1.3",
+    "@formkit/theme-regenesis": "^1.4.2",
+    "@graphql-codegen/add": "^5.0.3",
+    "@graphql-codegen/cli": "^5.0.7",
+    "@graphql-codegen/typescript": "^4.1.6",
+    "@graphql-codegen/typescript-operations": "^4.6.1",
+    "@graphql-codegen/typescript-vue-apollo": "^4.1.2",
+    "@nuxt/icon": "2.0.0",
+    "@vueuse/nuxt": "^13.9.0",
+    "@vueuse/router": "14.0.0-alpha.0",
+    "eslint": "^8.57.1",
+    "nuxt": "~4.1.0",
+    "stylelint": "^16.23.1",
+    "typescript": "^5.9.2"
+  },
+  "pnpm": {
+    "onlyBuiltDependencies": [
+      "@parcel/watcher",
+      "esbuild",
+      "sharp",
+      "vue-demi"
+    ]
+  }
+}

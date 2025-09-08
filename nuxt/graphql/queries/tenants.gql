@@ -1,0 +1,18 @@
+query tenants(
+  $limit: Int
+  $page: Int
+) {
+  tenants(
+    limit: $limit,
+    page: $page,
+  ) {
+    current_page
+    data {
+      id
+      title
+    }
+    per_page
+    last_page
+    total
+  }
+}

@@ -1,0 +1,7 @@
+{
+  "Dear :name,": "Beste :name,",
+  "Click the button below to choose a new password.": "Klik op onderstaande knop om uw wachtwoord opnieuw in te stellen.",
+  "Sincerely,": "Met vriendelijke groet,",
+  "Reset wachtwoord": "Wachtwoord herstellen",
+  "This email is valid for <strong>:expire</strong>. After that you have to request this email again.": "Deze mail is <strong>:expire</strong> geldig. Na die tijd dient er een nieuwe wachtwoord reset aangevraagd te worden."
+}
