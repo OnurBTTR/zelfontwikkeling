@@ -13,8 +13,21 @@ export default {
   ],
   theme: {
     extend: {
+      fontFamily: {
+        'poppins': ['Poppins, sans-serif'],
+        'kenteken': ['Kenteken, sans-serif'],
+      },
       colors: {
-        primary: '#FFCC01',
+        blue: {
+          700: '#0046B1',
+          800: '#003B94',
+        },
+        lime: {
+          300: '#B3FD4B',
+        },
+        neutral: {
+          200: '#F9F6EE',
+        },
       },
     },
     container: {

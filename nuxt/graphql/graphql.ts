@@ -252,6 +252,7 @@ export type Query = {
   passwordRules: Array<PasswordRule>;
   settings: Array<Setting>;
   tenants?: Maybe<TenantPagination>;
+  vehicle?: Maybe<Vehicle>;
 };
 
 
@@ -284,6 +285,11 @@ export type QueryPageArgs = {
 export type QueryTenantsArgs = {
   limit?: InputMaybe<Scalars['Int']['input']>;
   page?: InputMaybe<Scalars['Int']['input']>;
+};
+
+
+export type QueryVehicleArgs = {
+  license_plate: Scalars['String']['input'];
 };
 
 export type Role = {
@@ -400,6 +406,13 @@ export type User_07e75d37dfdb1fad1b23e74888c041b4AvatarArgs = {
   w?: InputMaybe<Scalars['Int']['input']>;
 };
 
+export type Vehicle = {
+  __typename?: 'Vehicle';
+  brand?: Maybe<Scalars['String']['output']>;
+  license_plate?: Maybe<Scalars['String']['output']>;
+  model?: Maybe<Scalars['String']['output']>;
+};
+
 export type MeQueryVariables = Exact<{ [key: string]: never; }>;
 
 
@@ -412,6 +425,13 @@ export type TenantsQueryVariables = Exact<{
 
 
 export type TenantsQuery = { __typename?: 'Query', tenants?: { __typename?: 'TenantPagination', current_page: number, per_page: number, last_page: number, total: number, data: Array<{ __typename?: 'Tenant', id: number, title: string }> } | null };
+
+export type VehicleQueryVariables = Exact<{
+  licensePlate: Scalars['String']['input'];
+}>;
+
+
+export type VehicleQuery = { __typename?: 'Query', vehicle?: { __typename?: 'Vehicle', license_plate?: string | null, brand?: string | null, model?: string | null } | null };
 
 
 export const MeDocument = gql`
@@ -480,3 +500,35 @@ export function useTenantsLazyQuery(variables: TenantsQueryVariables | VueCompos
   return VueApolloComposable.useLazyQuery<TenantsQuery, TenantsQueryVariables>(TenantsDocument, variables, options);
 }
 export type TenantsQueryCompositionFunctionResult = VueApolloComposable.UseQueryReturn<TenantsQuery, TenantsQueryVariables>;
+export const VehicleDocument = gql`
+    query vehicle($licensePlate: String!) {
+  vehicle(license_plate: $licensePlate) {
+    license_plate
+    brand
+    model
+  }
+}
+    `;
+
+/**
+ * __useVehicleQuery__
+ *
+ * To run a query within a Vue component, call `useVehicleQuery` and pass it any options that fit your needs.
+ * When your component renders, `useVehicleQuery` returns an object from Apollo Client that contains result, loading and error properties
+ * you can use to render your UI.
+ *
+ * @param variables that will be passed into the query
+ * @param options that will be passed into the query, supported options are listed on: https://v4.apollo.vuejs.org/guide-composable/query.html#options;
+ *
+ * @example
+ * const { result, loading, error } = useVehicleQuery({
+ *   licensePlate: // value for 'licensePlate'
+ * });
+ */
+export function useVehicleQuery(variables: VehicleQueryVariables | VueCompositionApi.Ref<VehicleQueryVariables> | ReactiveFunction<VehicleQueryVariables>, options: VueApolloComposable.UseQueryOptions<VehicleQuery, VehicleQueryVariables> | VueCompositionApi.Ref<VueApolloComposable.UseQueryOptions<VehicleQuery, VehicleQueryVariables>> | ReactiveFunction<VueApolloComposable.UseQueryOptions<VehicleQuery, VehicleQueryVariables>> = {}) {
+  return VueApolloComposable.useQuery<VehicleQuery, VehicleQueryVariables>(VehicleDocument, variables, options);
+}
+export function useVehicleLazyQuery(variables?: VehicleQueryVariables | VueCompositionApi.Ref<VehicleQueryVariables> | ReactiveFunction<VehicleQueryVariables>, options: VueApolloComposable.UseQueryOptions<VehicleQuery, VehicleQueryVariables> | VueCompositionApi.Ref<VueApolloComposable.UseQueryOptions<VehicleQuery, VehicleQueryVariables>> | ReactiveFunction<VueApolloComposable.UseQueryOptions<VehicleQuery, VehicleQueryVariables>> = {}) {
+  return VueApolloComposable.useLazyQuery<VehicleQuery, VehicleQueryVariables>(VehicleDocument, variables, options);
+}
+export type VehicleQueryCompositionFunctionResult = VueApolloComposable.UseQueryReturn<VehicleQuery, VehicleQueryVariables>;

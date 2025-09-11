@@ -1,5 +1,10 @@
 <template>
-  <main class="grid min-h-dvh grid-rows-[min-content,auto,min-content]">
+  <div
+    class="
+      grid min-h-dvh grid-rows-[min-content,auto,min-content] font-poppins
+      text-base
+    "
+  >
     <AppHeader />
 
     <main>
@@ -7,5 +12,5 @@
     </main>
 
     <AppFooter />
-  </main>
+  </div>
 </template>

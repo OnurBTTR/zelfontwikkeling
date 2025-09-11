@@ -1,0 +1,11 @@
+query vehicle(
+  $licensePlate: String!
+) {
+  vehicle(
+    license_plate: $licensePlate
+  ) {
+    license_plate
+    brand
+    model
+  }
+}

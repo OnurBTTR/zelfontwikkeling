@@ -6,6 +6,11 @@ export default defineNuxtConfig({
     '@bttr-devs/nuxt-layer-sofie-auth',
   ],
 
+  modules: [
+    '@nuxt/icon',
+    '@nuxt/fonts',
+  ],
+
   imports: {
     dirs: [
       './constants',
@@ -20,5 +25,21 @@ export default defineNuxtConfig({
     },
   },
 
-  modules: ['@nuxt/icon'],
+  fonts: {
+    defaults: {
+      weights: [400, 500, 600, 700],
+    },
+  },
+
+  icon: {
+    size: '1.25rem',
+  },
+
+  tailwindcss: {
+    config: {
+      content: [
+        './formkit.*.ts',
+      ],
+    },
+  },
 });

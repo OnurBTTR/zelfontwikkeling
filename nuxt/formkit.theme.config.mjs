@@ -8,7 +8,7 @@ import formkitTheme from '@formkit/theme-regenesis';
  * 3. Run `pnpm formkit:generate` to regenerate and add formkit.theme.ts to the repository
  */
 export default formkitTheme({
-  radius: 'rounded',
+  radius: 'rounded-lg',
   accentColor: 'blue',
   spacing: '2',
   scale: 'base',
